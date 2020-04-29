@@ -21,7 +21,7 @@ class Profile(models.Model):
     # Score Calculation
     increment = models.IntegerField(default=4)
     decrement = models.IntegerField(default=0)
-    current_qno = models.IntegerField(default=-1)
+    current_qno = models.IntegerField(default=1)
     visited = models.CharField(max_length=100, default="")
     attempt_counter = models.IntegerField(default=2)
     score = models.IntegerField(default=0)
@@ -33,7 +33,7 @@ class Profile(models.Model):
         return self.user.username
 
 
-class Questions(models.Model):
+class Question(models.Model):
     question = models.TextField(max_length=500, default="")
     answer = models.IntegerField(default=0)
     level = models.IntegerField(default=2)
@@ -44,7 +44,7 @@ class Questions(models.Model):
 
 class Response(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    question = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     attempt1 = models.IntegerField(default=0)
     attempt2 = models.IntegerField(default=0)
 

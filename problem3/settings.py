@@ -5,7 +5,7 @@ STATIC_DIR = os.path.join(BASE_DIR, "project/static")
 
 SECRET_KEY = 'ja=epv7t5!8fb_e(fj=xff@d2jq1*_mjco^l&0g4c7nq!3nfrf'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

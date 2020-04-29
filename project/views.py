@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
-from .models import Questions, Profile, Response
+from .models import Question, Profile, Response
 
 
 def signup(request):
@@ -45,9 +45,9 @@ def instructions(request):
         profile.login_time = datetime.now()
         profile.logout_time = profile.login_time + timedelta(minutes=28)
         if profile.level == 0:
-            qno = 1
-        else:
             qno = 11
+        else:
+            qno = 1
         profile.save()
         return redirect('questions', qno)
     else:
@@ -60,7 +60,7 @@ def generate(request):
     while True:
         if profile.attempted < 10:
             if profile.level == 0:
-                qno = random.randint(1, 10)
+                qno = random.randint(11, 20)
                 for i in profile.visited.split(','):
                     if i != str(qno):
                         continue
@@ -71,7 +71,7 @@ def generate(request):
                 profile.save()
                 return redirect('questions', qno)
             if profile.level == 1:
-                qno = random.randint(11, 20)
+                qno = random.randint(1, 10)
                 for i in profile.visited.split(','):
                     if i != str(qno):
                         continue
@@ -89,7 +89,6 @@ def generate(request):
 @login_required
 def questions(request, qno):
     profile = Profile.objects.get(user=request.user)
-    profile.current_qno = qno
     cur_time = datetime.now()
     time_remain = (profile.logout_time.hour * 60 * 60) + (
             profile.logout_time.minute * 60) + profile.logout_time.second - \
@@ -99,12 +98,14 @@ def questions(request, qno):
     profile.save()
 
     if request.method == "GET":
-        question = Questions.objects.get(pk=profile.current_qno)
+        if qno != profile.current_qno:
+            return HttpResponse("<h1>You cannot do this!</h1>")
+        question = Question.objects.get(pk=profile.current_qno)
         context = {'profile': profile, 'question': question, 'your_time': time_remain}
         return render(request, 'project/Codingpage.html', context)
 
     else:
-        question = Questions.objects.get(pk=qno)
+        question = Question.objects.get(pk=qno)
         if profile.attempt_counter == 2:
             profile.current_qno = qno
             profile.attempt1 = request.POST.get('attempt1')
@@ -124,19 +125,19 @@ def questions(request, qno):
                     profile.decrement = -1
                     profile.attempt_counter = 1
                     profile.save()
-                    question = Questions.objects.get(pk=qno)
+                    question = Question.objects.get(pk=qno)
                     context = {'profile': profile, 'question': question, 'your_time': time_remain,
                                'answer': profile.attempt1}
                     return render(request, 'project/Codingpage.html', context)
 
             else:
-                question = Questions.objects.get(pk=profile.current_qno)
+                question = Question.objects.get(pk=profile.current_qno)
                 context = {'profile': profile, 'question': question, 'your_time': time_remain}
                 return render(request, 'project/Codingpage.html', context)
 
         elif profile.attempt_counter == 1:
             attempt2 = request.POST.get('attempt2')
-            question = Questions.objects.get(pk=profile.current_qno)
+            question = Question.objects.get(pk=profile.current_qno)
             if attempt2 != '':
                 attempt2 = int(attempt2)
                 response = Response.objects.create(user=request.user, question=question, attempt2=attempt2)
@@ -153,7 +154,7 @@ def questions(request, qno):
                 profile.save()
                 return redirect('generate')
             else:
-                question = Questions.objects.get(pk=profile.current_qno)
+                question = Question.objects.get(pk=profile.current_qno)
                 context = {'profile': profile, 'question': question, 'your_time': time_remain,
                            'answer': profile.attempt1}
                 return render(request, 'project/Codingpage.html', context)
