@@ -18,7 +18,7 @@
     6. To run clash **python manage.py runserver**
     7. Enjoy!
 
-### Technology Used:
+## Technology Used:
 
 * **Front end:**
   1. HTML5
@@ -31,14 +31,14 @@
 * **Database used:**
   1. SQLite3
   
-### Modules Used:
+## Modules Used:
 
 * User authentication
 * Timer
 * Conditional controlling of HTML elements
 * Dealing with garbage url
  
-### Snippets of the project:
+## Snippets of the project:
 
 ### 1. Login page
 
