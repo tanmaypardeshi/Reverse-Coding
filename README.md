@@ -1,6 +1,6 @@
 # RC CREDENZ 19'
 
-#### Working project of Reverse Coding which is a technical event in Credenz organised by PICT IEEE Student Branch
+### Working project of Reverse Coding which is a technical event in Credenz organised by PICT IEEE Student Branch
 
 ## Steps to run project:
 
