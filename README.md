@@ -40,15 +40,15 @@
  
 ### Snippets of the project:
 
-#### 1. Login page
+### 1. Login page
 
 ![clash1](/screenshots/rc1.png)
 
-#### 2. Instruction page
+### 2. Instruction page
 ![clash2](/screenshots/rc2.png)
 
-#### 3. Questions page
+### 3. Questions page
 ![clash3](/screenshots/rc3.png)
 
-#### 4. Result page
+### 4. Result page
 ![rc4](/screenshots/rc4.png)
