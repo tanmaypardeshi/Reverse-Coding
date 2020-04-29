@@ -15,7 +15,7 @@
     3. Run **python manage.py makemigrations**
     4. Run **python manage.py migrate** to make migrations
     5. Add a few questions in the database to see functioning
-    6. To run clash **python manage.py runserver**
+    6. To run rc **python manage.py runserver**
     7. Enjoy!
 
 ## Technology Used:
