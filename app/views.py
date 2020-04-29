@@ -33,9 +33,9 @@ def signup(request):
             login(request, user)
             return redirect('instructions')
         else:
-            return render(request, 'project/signup.html')
+            return render(request, 'app/signup.html')
     else:
-        return render(request, 'project/signup.html')
+        return render(request, 'app/signup.html')
 
 
 @login_required
@@ -51,7 +51,7 @@ def instructions(request):
         profile.save()
         return redirect('questions', qno)
     else:
-        return render(request, 'project/RCIns.html')
+        return render(request, 'app/RCIns.html')
 
 
 @login_required
@@ -102,7 +102,7 @@ def questions(request, qno):
             return HttpResponse("<h1>You cannot do this!</h1>")
         question = Question.objects.get(pk=profile.current_qno)
         context = {'profile': profile, 'question': question, 'your_time': time_remain}
-        return render(request, 'project/Codingpage.html', context)
+        return render(request, 'app/Codingpage.html', context)
 
     else:
         question = Question.objects.get(pk=qno)
@@ -128,12 +128,12 @@ def questions(request, qno):
                     question = Question.objects.get(pk=qno)
                     context = {'profile': profile, 'question': question, 'your_time': time_remain,
                                'answer': profile.attempt1}
-                    return render(request, 'project/Codingpage.html', context)
+                    return render(request, 'app/Codingpage.html', context)
 
             else:
                 question = Question.objects.get(pk=profile.current_qno)
                 context = {'profile': profile, 'question': question, 'your_time': time_remain}
-                return render(request, 'project/Codingpage.html', context)
+                return render(request, 'app/Codingpage.html', context)
 
         elif profile.attempt_counter == 1:
             attempt2 = request.POST.get('attempt2')
@@ -157,7 +157,7 @@ def questions(request, qno):
                 question = Question.objects.get(pk=profile.current_qno)
                 context = {'profile': profile, 'question': question, 'your_time': time_remain,
                            'answer': profile.attempt1}
-                return render(request, 'project/Codingpage.html', context)
+                return render(request, 'app/Codingpage.html', context)
 
 
 def logout_user(request):
@@ -166,7 +166,7 @@ def logout_user(request):
         profile.logout_time = datetime.now()
         context = {'profile': profile}
         logout(request)
-        return render(request, 'project/Result_page.html', context)
+        return render(request, 'app/Result_page.html', context)
     except:
         return redirect('signup')
 
@@ -187,7 +187,7 @@ def emergency(request):
         extra_time = int(request.POST.get('time'))
 
         if not password1 == "TPPN2019":
-            return render(request, 'project/emergency.html', {'error': "Super Password is wrong"})
+            return render(request, 'app/emergency.html', {'error': "Super Password is wrong"})
         user = authenticate(username=username, password=password)
         if user:
             if user.is_active:
@@ -197,6 +197,6 @@ def emergency(request):
                 profile.save()
                 return redirect('questions', profile.current_qno)
         else:
-            return render(request, 'project/emergency.html', {'error': 'User not authenticated'})
+            return render(request, 'app/emergency.html', {'error': 'User not authenticated'})
     else:
-        return render(request, 'project/emergency.html')
+        return render(request, 'app/emergency.html')

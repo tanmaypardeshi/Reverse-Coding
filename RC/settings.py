@@ -1,16 +1,16 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_DIR = os.path.join(BASE_DIR, "project/static")
+STATIC_DIR = os.path.join(BASE_DIR, "app/static")
 
 SECRET_KEY = 'ja=epv7t5!8fb_e(fj=xff@d2jq1*_mjco^l&0g4c7nq!3nfrf'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    'project',
+    'app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,7 +28,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'problem3.urls'
+ROOT_URLCONF = 'RC.urls'
 
 TEMPLATES = [
     {
@@ -46,7 +46,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'problem3.wsgi.application'
+WSGI_APPLICATION = 'RC.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
