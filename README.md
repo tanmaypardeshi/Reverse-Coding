@@ -30,6 +30,13 @@
  
 * **Database used:**
   1. SQLite3
+  
+### Modules Used:
+
+* User authentication
+* Timer
+* Conditional controlling of HTML elements
+* Dealing with garbage url
  
 ### Snippets of the project:
 
@@ -42,3 +49,6 @@
 
 #### 3. Questions page
 ![clash3](/screenshots/rc3.png)
+
+#### 4. Result page
+![rc4](/screenshots/rc4.png)

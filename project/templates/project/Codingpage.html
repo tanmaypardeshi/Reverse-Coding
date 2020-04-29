@@ -9,37 +9,22 @@
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/Codingpage.css' %}">
-    <script type="text/javascript">
-    <script src="{% static 'js/jquery.js' %}"></script>
-
-      <script>
-        function preventBack(){window.history.forward();}
-        setTimeout("preventBack()", 0);
-        window.onunload = function(){null};
-    </script>
-     <script type="text/javascript" >
-       function preventBack(){
-            window.history.forward();
-        }
-        setTimeout("preventBack()", 0);
-        window.onunload=function(){null};
-   </script>
-
 </head>
+
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script>
 $(document).ready(function(){
-   var x = document.getElementById("attempt1");
-   var y = document.getElementById("attempt2");
-    if( {{profile.attempt_cntr}} == 2)
+   let x = document.getElementById("attempt1");
+   let y = document.getElementById("attempt2");
+    if( {{profile.attempt_counter}} == 2)
     {
         x.disabled = false;
         y.disabled = true;
         y.style.cursor = "not-allowed";
     }
-    if( {{profile.attempt_cntr }} == 1)
+    if( {{profile.attempt_counter }} == 1)
     {
-        var store = document.getElementById("attempt1").value;
+        let store = document.getElementById("attempt1").value;
         x.placeholder=store;
         x.style.border = '2px solid red';
         x.disabled = true;
@@ -85,7 +70,7 @@ $(document).ready(function(){
                                     <div class="row" id="modal-footer">
                                             <div class="col-lg-1"></div>
                                         <div class="col-lg-4">
-                                          <button  class="btn btn-danger" formaction="/question/logout/" formmethod="post" type="submit" style="font-size:15px ;width: 8vw;height: 5vh;margin-left:2vw">Yes</button>
+                                          <button  class="btn btn-danger" formaction="{% url 'logout' %}" type="submit" style="font-size:15px ;width: 8vw;height: 5vh;margin-left:2vw">Yes</button>
                                         </div>
                                         <div class="col-lg-2"></div>
                                         <div class="col-lg-4">
@@ -278,7 +263,7 @@ $(document).ready(function(){
                                     </div>
                                     <div class="row df">
                                         <div class="col mt-2" style="display:flex; justify-content: center;text-align: center;">
-                                            <button type="submit" class="btn btn-block zz" id="submit"  formaction="/answer/{{question.id}}/" onclick="sb()">SUBMIT</button>
+                                            <button type="submit" class="btn btn-block zz" id="submit"  formaction="/questions/{{question.id}}/" onclick="sb()">SUBMIT</button>
                                         </div>
                                     </div>
                                 </div>
@@ -307,10 +292,10 @@ $(document).ready(function(){
                             </div>
                             <div class="row b" style="height: 18vh;border: none;">
                                 <p class="col-lg-5 mr-2 ml-2 fillg" style="margin-top:12px">
-                                   +{{profile.incr}}
+                                   +{{profile.increment}}
                                 </p>
                                 <p class="col-lg-5 ml-1 fillr" style="margin-top:12px">
-                                    {{profile.decr}}
+                                    {{profile.decrement}}
                                 </p>
                             </div>
                         </div>

@@ -12,13 +12,13 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
     </head>
-    <form method="post" action="{% url 'instruction' %}">
+    <form method="post">
         {% csrf_token %}
         <body style="background-image:url(/static/images/bg-black.jpeg);overflow:hidden">
             <div class="container-fluid">
                  <div class="row" style="background-color: rgb(0, 0, 0);height:7vh;">
             <div class="col-lg-5" style="height: 7vh;display: flex; justify-content: center;align-items: center;">
-                <div class="col-lg-3" style=" height: 6vh; display:flex;align-items:center;justify-content: center;color: #d7e9f8;margin-right:55px;"><img src="{% static 'images/RC.png' %}"height="55vh"width="80%"></div>
+                <div class="col-lg-3" style=" height: 6vh; display:flex;align-items:center;justify-content: center;color: #d7e9f8;margin-right:55px;"><img src="{% static 'images/RC.png' %}" height="55vh" width="80%"></div>
                 <div class="col-lg-9" id="Lg" ></div>
             </div>
             <div class="col-lg-2" style=" height: 7vh; display: flex; justify-content: center;align-items: center;color: #d7e9f8">
@@ -60,9 +60,10 @@
 
                             </div>
                             <div class="" style="margin-top: 10vh; display:flex ; justify-content:center;">
-                                <form method="post" action="{% url 'instruction' %}">
+                                <form method="post">
                                     {% csrf_token %}
-                                    <button class="btn btn-default btn11" style="background-color:rgb(255,255,230);">PROCEED</button></form>
+                                    <button class="btn btn-default btn11" style="background-color:rgb(255,255,230);">PROCEED</button>
+                                </form>
                             </div>
                         </div>
                     </div>

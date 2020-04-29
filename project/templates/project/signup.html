@@ -10,7 +10,7 @@
 
 </head>
 
-<form method="post" action="">
+<form method="post" >
     {% csrf_token %}
 
 <body style="background-image:url(/static/images/black.jpeg);overflow:hidden">
@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <div class="row" style="background-color: rgb(0, 0, 0);height:7vh;">
             <div class="col-lg-5" style="height: 7vh;display: flex; justify-content: center;align-items: center;">
-                <div class="col-lg-3" style=" height: 6vh; display:flex;align-items:center;justify-content: center;color: #d7e9f8;margin-right:55px;"><img src="{% static 'images/RC.png' %}"height="55vh"width="80%"></div>
+                <div class="col-lg-3" style=" height: 6vh; display:flex;align-items:center;justify-content: center;color: #d7e9f8;margin-right:55px;"><img src="{% static 'images/RC.png' %}" height="55vh" width="80%"></div>
                 <div class="col-lg-9" id="Lg" ></div>
             </div>
             <div class="col-lg-2" style=" height: 7vh; display: flex; justify-content: center;align-items: center;color: #d7e9f8">
@@ -49,20 +49,20 @@
                         <div class="block"style="justify-content:center;text-align:center;">
 
                                 <div class="inputBox">
-                                    <input type="text" maxlength="32" placeholder="Enter Name"name="p1_name" required autocomplete="off" class="inptyp" id="name1" onclick="nm1c()">
+                                    <input type="text" maxlength="32" placeholder="Enter Name" name="player1" required autocomplete="off" class="inptyp" id="name1" onclick="nm1c()">
 
 
                                     </div>
 
                         <div class="inputBox">
 
-                                <input type="tel" placeholder="Enter Contact"name="mob1" id="contact1" pattern="[6-9]{1}[0-9]{9}"maxlength="10" required autocomplete="off" class="inptyp" oninvalid="this.setCustomValidity('Enter Valid Contact Number!')" oninput="this.setCustomValidity('')" onclick="cn1c()" >
+                                <input type="tel" placeholder="Enter Contact" name="mobile1" id="contact1" pattern="[6-9]{1}[0-9]{9}"maxlength="10" required autocomplete="off" class="inptyp" oninvalid="this.setCustomValidity('Enter Valid Contact Number!')" oninput="this.setCustomValidity('')" onclick="cn1c()" >
 
                             </div>
 
 
                             <div class="inputBox">
-                                <input type="email" placeholder="Enter Email" name="p1_email" id="email1" required autocomplete="off" class="inptyp"  onblur="validateEmail1(this);" onclick="em1c()">
+                                <input type="email" placeholder="Enter Email" name="email1" id="email1" required autocomplete="off" class="inptyp"  onblur="validateEmail1(this);" onclick="em1c()">
 
                                 </div>
                     </div>
@@ -74,11 +74,11 @@
                             <div class="block"style="justify-content:center;">
 
                                     <div class="inputBox">
-                                            <input type="text"  maxlength="32" placeholder="Team Name" name="uname" id="id_username" required autocomplete="off" onclick="tmn1c()" minlength="3" >
+                                            <input type="text"  maxlength="32" placeholder="Team Name" name="username" id="id_username" required autocomplete="off" onclick="tmn1c()" minlength="3" >
                                         <p id="font" > </p>
                                         </div>
                                         <div class="inputBox">
-                                                <input type="password" placeholder="Enter Password" name="pass" id="psw" required autocomplete="off" onclick="psw1c()" >
+                                                <input type="password" placeholder="Enter Password" name="password" id="psw" required autocomplete="off" onclick="psw1c()" >
 
                                             </div>
                                 <div id="radios" style="margin-right: 1vw; margin-left:0vw;margin-top:-5px">
@@ -105,7 +105,7 @@
                                 </div>
 
                                 <div style="text-align: center; padding-top: 2vh;margin-top:10px ">
-                                    <button type="submit" id="loginbtn" formaction="/" class="btl">LOGIN</button>
+                                    <button type="submit" id="loginbtn" class="btl">LOGIN</button>
                                 </div>
 
                             </div>
@@ -117,18 +117,18 @@
                             <div class="block"style="justify-content:center">
 
                                     <div class="inputBox">
-                                            <input type="text" maxlength="32" placeholder="Enter Name"name="p2_name"  autocomplete="off" class="inptyp" id="name2" onclick="nm2c()">
+                                            <input type="text" maxlength="32" placeholder="Enter Name" name="player2"  autocomplete="off" class="inptyp" id="name2" onclick="nm2c()">
 
                                         </div>
 
                             <div class="inputBox">
-                                    <input type="tel" placeholder="Enter Contact"name="mob2" id="contact2" pattern="[6-9]{1}[0-9]{9}"maxlength="10"  autocomplete="off" class="inptyp" oninvalid="this.setCustomValidity('Enter Valid Contact Number!')" oninput="this.setCustomValidity('')" onclick="cn2c()">
+                                    <input type="tel" placeholder="Enter Contact" name="mobile2" id="contact2" pattern="[6-9]{1}[0-9]{9}"maxlength="10"  autocomplete="off" class="inptyp" oninvalid="this.setCustomValidity('Enter Valid Contact Number!')" oninput="this.setCustomValidity('')" onclick="cn2c()">
 
                                 </div>
 
 
                                 <div class="inputBox">
-                                        <input type="email"  placeholder="Enter Email"  id="email2" name="p2_email"  autocomplete="off" class="inptyp" onblur="validateEmail2(this);" onclick="em2c()" >
+                                        <input type="email"  placeholder="Enter Email"  id="email2" name="email2"  autocomplete="off" class="inptyp" onblur="validateEmail2(this);" onclick="em2c()" >
 
                                     </div>
                     </div>
