@@ -92,7 +92,7 @@ def questions(request, qno):
     profile.current_qno = qno
     cur_time = datetime.now()
     time_remain = (profile.logout_time.hour * 60 * 60) + (
-                profile.logout_time.minute * 60) + profile.logout_time.second - \
+            profile.logout_time.minute * 60) + profile.logout_time.second - \
                   (cur_time.hour * 60 * 60) - (cur_time.minute * 60) - cur_time.second
     if time_remain == 0:
         return redirect('logout')
@@ -162,6 +162,7 @@ def questions(request, qno):
 def logout_user(request):
     try:
         profile = Profile.objects.get(user=request.user)
+        profile.logout_time = datetime.now()
         context = {'profile': profile}
         logout(request)
         return render(request, 'project/Result_page.html', context)
@@ -191,16 +192,10 @@ def emergency(request):
             if user.is_active:
                 login(request, user)
                 profile = Profile.objects.get(user=request.user)
-                profile.logout_time = profile.logout_time + timedelta(seconds=extra_time)
+                profile.logout_time = datetime.now() + timedelta(seconds=extra_time)
                 profile.save()
-                question = Questions.objects.get(pk=profile.current_qno, level=profile.level)
-                cur_time = datetime.now()
-                time_remain = (profile.logout_time.hour * 60 * 60) + (
-                        profile.logout_time.minute * 60) + profile.logout_time.second - (cur_time.hour * 60 * 60) - (
-                                      cur_time.minute * 60) - cur_time.second
-                context = {'profile': profile, 'question': question, 'your_time': time_remain}
-                return render(request, 'project/Codingpage.html', context)
+                return redirect('questions', profile.current_qno)
         else:
-            return render(request, 'project/emergency.html')
+            return render(request, 'project/emergency.html', {'error': 'User not authenticated'})
     else:
         return render(request, 'project/emergency.html')
