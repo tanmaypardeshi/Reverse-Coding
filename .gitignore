@@ -2,3 +2,7 @@ db.sqlite3
 .idea
 rc
 app/migrations
+app/views.py
+app/models.py
+app/urls.py
+RC/settings.py
