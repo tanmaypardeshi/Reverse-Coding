@@ -1,8 +1,7 @@
 db.sqlite3
 .idea
 rc
+venv
 app/migrations
-app/views.py
-app/models.py
-app/urls.py
-RC/settings.py
+app/__pycache__
+RC/__pycache__s
